@@ -1,0 +1,311 @@
+p,
+a,
+q,
+s,
+b,
+u,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+tr,
+th,
+td,
+tt,
+em,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+nav,
+del,
+pre,
+big,
+dfn,
+img,
+var,
+ins,
+kbd,
+cite,
+code,
+menu,
+body,
+html,
+span,
+abbr,
+samp,
+ruby,
+time,
+mark,
+form,
+aside,
+tbody,
+audio,
+video,
+embed,
+tfoot,
+thead,
+label,
+table,
+small,
+strike,
+strong,
+legend,
+canvas,
+center,
+applet,
+figure,
+footer,
+header,
+hgroup,
+object,
+output,
+iframe,
+article,
+acronym,
+address,
+section,
+caption,
+details,
+summary,
+fieldset,
+blockquote,
+figcaption {
+  display: block;
+  font-size: 100%;
+  font-family: "Open Sans", sans-serif;
+}
+body {
+  height: 100%;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+input {
+  box-shadow: none;
+  -o-box-shadow: none;
+  -ms-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+a,
+select,
+button {
+  cursor: pointer;
+  display: inline-block;
+}
+img {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  vertical-align: baseline;
+}
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  color: black;
+  font-weight: 400;
+  user-select: none;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  background-size: cover;
+  -webkit-user-select: none;
+  -webkit-box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.container {
+  margin: 0 auto;
+  max-width: 100%;
+  // width: 80%;
+  background-image: radial-gradient(
+    circle,
+    #b91f05,
+    #bd5400,
+    #b77c00,
+    #a7a100,
+    #8dc300,
+    #63cb52,
+    #36cf83,
+    #00d0aa,
+    #00b4c8,
+    #0092eb,
+    #0068f3,
+    #1621c9
+  );
+  height: 100vh;
+}
+.d_flex {
+  display: flex;
+}
+.justify__between {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+header {
+  h1 {
+    text-align: center;
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+}
+
+section {
+  padding: 5px 8px;
+  margin-bottom: 15px;
+  border: 3px solid silver;
+  background-image: radial-gradient(
+    circle,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
+  h2 {
+    margin: 15px 0;
+    font-size: 25px;
+    text-align: center;
+  }
+}
+
+form {
+  :hover {
+    background-image: linear-gradient(
+      to right,
+      #d16ba5,
+      #c777b9,
+      #ba83ca,
+      #aa8fd8,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8,
+      #52cffe,
+      #41dfff,
+      #46eefa,
+      #5ffbf1
+    );
+  }
+  div {
+    display: flex;
+    max-width: 50%;
+    cursor: pointer;
+    padding: 8px 5px;
+    margin: 15px auto;
+    align-items: center;
+    border: 1px silver dotted;
+    justify-content: space-between;
+
+    p {
+      background-color: transparent !important;
+    }
+
+    input {
+      cursor: pointer;
+    }
+
+    .__lastBtn {
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      border: 3px solid red;
+    }
+
+    .__btn {
+      width: 15px !important;
+      height: 15px !important;
+      border-radius: 50% !important;
+      border: 3px springgreen dashed !important;
+    }
+  }
+}
+
+main {
+  max-width: 100%;
+  width: 100%;
+  height: 100vh;
+  background-color: grey;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .modal {
+    z-index: 150;
+    max-width: 80%;
+    width: 100%;
+    margin: auto;
+    height: 80vh;
+    z-index: 54142;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: aqua;
+    height: 80vh;
+    border-radius: 10px;
+    border: 5px solid black;
+
+    &__title {
+      text-align: center;
+      font-size: 28px;
+      margin: 15px;
+    }
+
+    &__module_result {
+      display: flex;
+      margin: 0 auto 30px;
+      max-width: 400px;
+      font-size: 20px;
+      justify-content: space-evenly;
+
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 100px;
+        width: 100%;
+
+        span {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}
