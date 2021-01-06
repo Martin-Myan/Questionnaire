@@ -1,13 +1,11 @@
 import React from "react";
-import { Question } from "./components";
+import { Resultat } from "./containers";
 import style from "./App.module.scss";
 
-const App = () => {
-  return (
-    <div className={style.container}>
-      <Question />
-    </div>
-  );
-};
+const App = () => (
+  <div className={style.container}>
+    <Resultat />
+  </div>
+);
 
 export default App;

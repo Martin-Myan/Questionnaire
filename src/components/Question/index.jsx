@@ -1,67 +1,46 @@
-import React, { useState } from "react";
-import { questions } from "../../utils/index";
-import Modal from "../Modal";
+import React from "react";
+import PropTypes from "prop-types";
 import style from "../../App.module.scss";
 
-const Question = () => {
-  const [nextPage, setNextPage] = useState(1);
-  const [modalRender, setModalRender] = useState(false);
-  const [returnResult, setReturnResult] = useState([]);
+const Question = ({ nextPage, nextPageClick, questions }) => {
+  const renderItem = questions
+    .slice(nextPage - 1, nextPage)
+    .map(({ id, one, two, three, questions }) => (
+      <section className={style.questions} key={id}>
+        <h2 className={style.questions__title}>{questions} = ?</h2>
+        <form
+          className={style.questions__options}
+          onClick={(e) => e.preventDefault()}
+        >
+          <div role="button" onClick={() => nextPageClick(one)}>
+            <input type="radio" />
+            <p>{one}</p>
+          </div>
+          <div role="button" onClick={() => nextPageClick(two)}>
+            <input type="radio" />
+            <p>{two}</p>
+          </div>
+          <div role="button" onClick={() => nextPageClick(three)}>
+            <input type="radio" />
+            <p>{three}</p>
+          </div>
+        </form>
+      </section>
+    ));
 
-  const nextPageClick = (value) => {
-    setNextPage(nextPage + 1);
-    setReturnResult([...returnResult, { value }]);
-    if (nextPage === questions.length) {
-      return (
-        <>
-          {setNextPage(1)}
-          {setModalRender(true)}
-        </>
-      );
-    }
-  };
+  return renderItem;
+};
 
-  const closeModal = () => {
-    setReturnResult([]);
-    setModalRender(false);
-  };
+Question.defaultProps = {
+  nextPage: 1,
+  questions: [],
+  nextPageClick: () => {},
+};
 
-  const renderItem = questions.slice(nextPage - 1, nextPage).map((item) => (
-    <section key={item.id}>
-      <h2>{item.questions} = ?</h2>
-      <form onClick={(e) => e.preventDefault()}>
-        <div role="button" onClick={() => nextPageClick(item.one)}>
-          <button className={style.__lastBtn} type="radio" />
-          <p>{item.one}</p>
-        </div>
-        <div role="button" onClick={() => nextPageClick(item.two)}>
-          <input type="radio" />
-          <p>{item.two}</p>
-        </div>
-        <div role="button" onClick={() => nextPageClick(item.three)}>
-          <button className={style.__btn} type="radio" />
-          <p>{item.three}</p>
-        </div>
-      </form>
-    </section>
-  ));
-
-  return (
-    <>
-      <header>
-        <h1>Questionnaire</h1>
-        <h2>Question {nextPage}</h2>
-      </header>
-      {modalRender ? (
-        <Modal
-          reviewResults={returnResult}
-          onClick={() => closeModal()}
-          results={questions}
-        />
-      ) : null}
-      {renderItem}
-    </>
-  );
+Question.propTypes = {
+  nextPage: PropTypes.number,
+  questions: PropTypes.array,
+  nextPageClick: PropTypes.func,
 };
 
 export default Question;
