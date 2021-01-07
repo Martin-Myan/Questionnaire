@@ -1,15 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import style from "../../App.module.scss";
+
+import { noop } from "../../utils";
+
+import styles from "../../App.module.scss";
 
 const Question = ({ nextPage, nextPageClick, questions }) => {
   const renderItem = questions
     .slice(nextPage - 1, nextPage)
     .map(({ id, one, two, three, questions }) => (
-      <section className={style.questions} key={id}>
-        <h2 className={style.questions__title}>{questions} = ?</h2>
+      <section key={id} className={styles.questions}>
+        <h2 className={styles.questions__title}>{questions} = ?</h2>
         <form
-          className={style.questions__options}
+          className={styles.questions__options}
           onClick={(e) => e.preventDefault()}
         >
           <div role="button" onClick={() => nextPageClick(one)}>
@@ -34,7 +37,7 @@ const Question = ({ nextPage, nextPageClick, questions }) => {
 Question.defaultProps = {
   nextPage: 1,
   questions: [],
-  nextPageClick: () => {},
+  nextPageClick: noop,
 };
 
 Question.propTypes = {

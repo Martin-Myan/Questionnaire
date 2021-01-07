@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { questions } from "../../utils";
-import { Header, Modal, Question } from "../../components";
+import { Modal, Header, Question } from "../../components";
+
+import styles from "../../App.module.scss";
 
 const Resultat = () => {
   const [nextPage, setNextPage] = useState(1);
@@ -11,12 +13,8 @@ const Resultat = () => {
     setNextPage(nextPage + 1);
     setReturnResult([...returnResult, { value }]);
     if (nextPage === questions.length) {
-      return (
-        <>
-          {setNextPage(1)}
-          {setModalRender(true)}
-        </>
-      );
+      setNextPage(1);
+      setModalRender(true);
     }
   };
 
@@ -24,21 +22,6 @@ const Resultat = () => {
     setReturnResult([]);
     setModalRender(false);
   };
-
-  const returnResultModal = () => {
-    return (
-      <>
-        {modalRender ? (
-          <Modal
-            onClick={closeModal}
-            results={questions}
-            reviewResults={returnResult}
-          />
-        ) : null}
-      </>
-    );
-  };
-
   return (
     <>
       <Header nextPage={nextPage} />
@@ -47,7 +30,15 @@ const Resultat = () => {
         nextPageClick={nextPageClick}
         questions={questions}
       />
-      {returnResultModal()}
+      {modalRender ? (
+        <div className={styles.modal} type="button" onClick={closeModal}>
+          <div className={styles.modal__result}>
+            <span className={styles.modal__result__title}>Results</span>
+
+            <Modal results={questions} reviewResults={returnResult} />
+          </div>
+        </div>
+      ) : null}
     </>
   );
 };
